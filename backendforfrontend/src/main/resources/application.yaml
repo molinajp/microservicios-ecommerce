@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: "bff-service"
+  zipkin:
+    base-url: http://localhost:9411/
+cards-service:
+ base-path: ${cards-path}
+orders-service:
+  base-path: ${orders-path}
+products-service:
+  base-path: ${products-path}
+clients-service:
+  base-path: ${clients-path}
+  
+server:
+  port: ${bff-port}
+  servlet:
+    context-path: ${bff-path}
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}

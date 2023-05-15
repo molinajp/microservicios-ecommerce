@@ -1,0 +1,22 @@
+version: '2.6'
+services:
+  mock-soap:
+    image: juanmolinagl/mock-soap
+    networks:
+    - cards-net
+    ports:
+    - 8088:8088
+    environment:
+      MOCK_SERVICE_NAME: GetCardsSoap MockService
+  cards-service:
+    image: sporaviral/undefined-cards:0.0.1-SNAPSHOT
+    networks:
+    - cards-net
+    depends_on:
+    - mock-soap
+    ports:
+    - 8300:8300
+    environment:
+      URL_MOCK: http://mock-soap:8088/mockGetCardsSoap
+networks:
+  cards-net:

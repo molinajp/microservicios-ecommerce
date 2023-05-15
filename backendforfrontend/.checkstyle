@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<fileset-config file-format-version="1.2.0" simple-config="false" sync-formatter="false">
+  <local-check-config name="maven-checkstyle-plugin validateCheckStyle" location="file:/C:/Users/nicolas.evangelista/Desktop/Trabajo%20Grupal/backendforfrontend/src/main/resources/config/checkstyle/checkstyle.xml" type="remote" description="maven-checkstyle-plugin configuration validateCheckStyle">
+    <property name="checkstyle.header.file" value="C:\Users\nicolas.evangelista\Desktop\Trabajo Grupal\.metadata\.plugins\org.eclipse.core.resources\.projects\backendforfrontend\com.basistech.m2e.code.quality.checkstyleConfigurator\checkstyle-header-validateCheckStyle.txt"/>
+    <property name="checkstyle.cache.file" value="${project_loc}/target/checkstyle-cachefile"/>
+  </local-check-config>
+  <fileset name="java-sources-validateCheckStyle" enabled="true" check-config-name="maven-checkstyle-plugin validateCheckStyle" local="true">
+    <file-match-pattern match-pattern="^src/test/java/.*\.java" include-pattern="true"/>
+    <file-match-pattern match-pattern="^src/main/java/.*\.java" include-pattern="true"/>
+    <file-match-pattern match-pattern="^src/main/resources/.*\.properties" include-pattern="true"/>
+    <file-match-pattern match-pattern="^src/main/resources/.*\.properties" include-pattern="true"/>
+    <file-match-pattern match-pattern="^src/test/resources.*\.properties" include-pattern="true"/>
+  </fileset>
+</fileset-config>

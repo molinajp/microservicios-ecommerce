@@ -1,0 +1,32 @@
+version: "3.8"
+services:
+  vault-dev:
+      image: vault:latest
+      networks:
+        - vault-net
+      volumes:
+        - vault-file:/vault/file
+      ports:
+        - "8400:8400/tcp"
+      environment:
+        VAULT_DEV_ROOT_TOKEN_ID: '00000000-0000-0000-0000-000000000000'
+        VAULT_DEV_LISTEN_ADDRESS: '0.0.0.0:8400'
+      cap_add:
+        - IPC_LOCK
+      container_name: vault_dev
+      entrypoint: "vault server -dev"
+  insert_secrets:
+      image: juanmolinagl/undefined-vault:0.0.1-SNAPSHOT
+      networks:
+      - vault-net
+      ports:
+        - "8450:8450"
+      depends_on:
+        - vault-dev
+      environment:
+        - DATA_URI=http://vault-dev:8400
+     
+volumes:
+     vault-file: {}
+networks:
+  vault-net:

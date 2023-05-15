@@ -1,0 +1,1 @@
+mvn clean compile test jacoco:report sonar:sonar -Dsonar.login="admin" -Dsonar.password="admin1" -Dsonar.host.url=http://localhost:9000

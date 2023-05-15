@@ -1,0 +1,14 @@
+spring:
+  cloud:
+    config:
+      uri: http://localhost:8943
+      label: 1.0
+spring.cloud.vault:
+  host: localhost
+  port: 8400
+  scheme: http
+  uri: http://localhost:8400/
+  connection-timeout: 5000
+  read-timeout: 15000
+  authentication: TOKEN
+  token: 00000000-0000-0000-0000-000000000000

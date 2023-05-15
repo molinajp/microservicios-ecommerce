@@ -1,0 +1,188 @@
+{
+	"info": {
+		"_postman_id": "88834bbf-6f10-41ee-8de8-5978613c6327",
+		"name": "Cards",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CardByClient",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8300/cards_app/v1/cards?clientId=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8300",
+					"path": [
+						"cards_app",
+						"v1",
+						"cards"
+					],
+					"query": [
+						{
+							"key": "clientId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "CardByClient",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8300/cards_app/v1/cards?clientId=3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8300",
+							"path": [
+								"cards_app",
+								"v1",
+								"cards"
+							],
+							"query": [
+								{
+									"key": "clientId",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 25 Oct 2022 19:19:53 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"4\",\n    \"clientId\": \"1\",\n    \"cardNumber\": \"1254201254788520\",\n    \"cardIssuer\": \"Visa\"\n}"
+				},
+				{
+					"name": "Card is not present",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8300/cards_app/v1/cards?clientId=3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8300",
+							"path": [
+								"cards_app",
+								"v1",
+								"cards"
+							],
+							"query": [
+								{
+									"key": "clientId",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 25 Oct 2022 19:16:27 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"errors\": [\n        {\n            \"timestamp\": \"2022-10-25T19:16:27.916+00:00\",\n            \"code\": 500,\n            \"details\": \"Card is not present in soap service\"\n        }\n    ]\n}"
+				},
+				{
+					"name": "Connection refused",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8300/cards_app/v1/cards?clientId=3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8300",
+							"path": [
+								"cards_app",
+								"v1",
+								"cards"
+							],
+							"query": [
+								{
+									"key": "clientId",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"status": "Service Unavailable",
+					"code": 503,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 25 Oct 2022 19:22:07 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"errors\": [\n        {\n            \"timestamp\": \"2022-10-25T19:22:07.685+00:00\",\n            \"code\": 503,\n            \"details\": \"I/O error: Connection refused: no further information; nested exception is java.net.ConnectException: Connection refused: no further information\"\n        }\n    ]\n}"
+				}
+			]
+		}
+	]
+}

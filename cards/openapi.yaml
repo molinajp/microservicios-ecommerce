@@ -1,0 +1,80 @@
+openapi: 3.0.1
+info:
+  title: Cards Microservice
+  description: Microservice to manage sales module
+  version: v1
+servers:
+  - url: http://localhost:8300/
+    description: Generated server url
+paths:
+  /api/v1/cards:
+    get:
+      tags:
+        - CardController
+      description: Returns a single card
+      operationId: getCards
+      parameters:
+        - name: clientId
+          in: query
+          description: ID of client to return a card
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            '/':
+              schema:
+                $ref: '#/components/schemas/Card'
+        '404':
+          description: Client not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorsDto'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorsDto'
+        '503':
+          description: Service unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorsDto'
+
+components:
+  schemas:
+    ErrorsDto:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExceptionDto'
+    ExceptionDto:
+      type: object
+      properties:
+        timestamp:
+          type: string
+          format: date-time
+        code:
+          type: integer
+          format: int32
+        details:
+          type: string
+    Card:
+      type: object
+      properties:
+        id:
+          type: string
+        clientId:
+          type: string
+        cardNumber:
+          type: string
+        cardIssuer:
+          type: string

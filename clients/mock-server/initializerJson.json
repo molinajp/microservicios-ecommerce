@@ -1,0 +1,357 @@
+  [
+    {
+      "httpRequest" : {
+        "method" : "GET",
+        "path" : "/api/v1/clients/1"
+        
+    },
+      "httpResponse" : {
+        "body" : {"id": 1,
+				  "dni": "1123",
+				  "name": "Pedro",
+				  "lastName": "Perez",
+				  "address": "Calle 123"},
+        "statusCode": 200
+      }
+    },
+	{
+      "httpRequest" : {
+        "method" : "GET",
+        "path" : "/api/v1/clients/2"
+        
+    },
+      "httpResponse" : {
+        "body" : {"id": 2,
+                  "dni": "2123",
+                  "name": "Jose",
+                  "lastName": "Regui",
+                  "address": "Calle 123"},
+        "statusCode": 200
+      }
+    },
+	{
+      "httpRequest" : {
+        "method" : "GET",
+        "path" : "/api/v1/clients/3"
+        
+    },
+      "httpResponse" : {
+        "body" : {"id": 3,
+				  "dni": "3123",
+				  "name": "Speedy",
+				  "lastName": "Gonzalez",
+				  "address": "Entre Rios 456"},
+        "statusCode": 200
+      }
+    },
+		{
+      "httpRequest" : {
+        "method" : "GET",
+        "path" : "/api/v1/clients/4"
+        
+    },
+      "httpResponse" : {
+        "body" : {"id": 4,
+				  "dni": "4123",
+				  "name": "Jose",
+				  "lastName": "Gimenez",
+				  "address": "Corrientes 789"},
+        "statusCode": 200
+      }
+    },
+    {
+      "httpRequest" : {
+        "method" : "GET",
+        "path" : "/api/v1/clients/5"
+        
+    },
+      "httpResponse" : {
+        "body" : {"id": 5,
+                  "dni": "5123",
+                  "name": "Alberto",
+                  "lastName": "Moyano",
+                  "address": "Calle 123"},
+        "statusCode": 200
+      }
+    },
+    {
+      "httpRequest" : {
+        "method" : "GET",
+        "path" : "/api/v1/clients/6"
+        
+    },
+      "httpResponse" : {
+        "body" : {"id": 6,
+                  "dni": "6123",
+                  "name": "Pepe",
+                  "lastName": "Pepito",
+                  "address": "Calle 123"},
+        "statusCode": 200
+      }
+    },
+    {
+      "httpRequest" : {
+        "method" : "GET",
+        "path" : "/api/v1/clients/7"
+        
+    },
+      "httpResponse" : {
+        "body" : {"id": 7,
+                  "dni": "7123",
+                  "name": "Fulano",
+                  "lastName": "Fulanito",
+                  "address": "Calle 123"},
+        "statusCode": 200
+      }
+    },
+    {
+      "httpRequest" : {
+        "method" : "GET",
+        "path" : "/api/v1/clients/8"
+        
+    },
+      "httpResponse" : {
+        "body" : {"id": 8,
+                  "dni": "8123",
+                  "name": "Alejandro",
+                  "lastName": "Algo",
+                  "address": "Calle 123"},
+        "statusCode": 200
+      }
+    },
+    {
+      "httpRequest" : {
+        "method" : "GET",
+        "path" : "/api/v1/clients/9"
+        
+    },
+      "httpResponse" : {
+        "body" : {"id": 9,
+                  "dni": "9123",
+                  "name": "Nombre",
+                  "lastName": "Apellido",
+                  "address": "Calle 123"},
+        "statusCode": 200
+      }
+    },
+    {
+      "httpRequest" : {
+        "method" : "GET",
+        "path" : "/api/v1/clients/10"
+        
+    },
+      "httpResponse" : {
+        "body" : {"id": 10,
+                  "dni": "10123",
+                  "name": "Algo",
+                  "lastName": "Alguito",
+                  "address": "Calle 123"},
+        "statusCode": 200
+      }
+    },
+    {
+      "httpRequest" : {
+        "method" : "GET",
+        "path" : "/api/v1/clients/1123"
+        
+    },
+      "httpResponse" : {
+        "body" : {"id": 1,
+                  "dni": "1123",
+                  "name": "Pedro",
+                  "lastName": "Perez",
+                  "address": "Calle 123"},
+        "statusCode": 200
+      }
+    },
+    {
+      "httpRequest" : {
+        "method" : "GET",
+        "path" : "/api/v1/clients/2123"
+        
+    },
+      "httpResponse" : {
+        "body" : {"id": 2,
+                  "dni": "2123",
+                  "name": "Jose",
+                  "lastName": "Regui",
+                  "address": "Calle 123"},
+        "statusCode": 200
+      }
+    },
+    {
+      "httpRequest" : {
+        "method" : "GET",
+        "path" : "/api/v1/clients/3123"
+        
+    },
+      "httpResponse" : {
+        "body" : {"id": 3,
+                  "dni": "3123",
+                  "name": "Speedy",
+                  "lastName": "Gonzalez",
+                  "address": "Entre Rios 456"},
+        "statusCode": 200
+      }
+    },
+        {
+      "httpRequest" : {
+        "method" : "GET",
+        "path" : "/api/v1/clients/4123"
+        
+    },
+      "httpResponse" : {
+        "body" : {"id": 4,
+                  "dni": "4123",
+                  "name": "Jose",
+                  "lastName": "Gimenez",
+                  "address": "Corrientes 789"},
+        "statusCode": 200
+      }
+    },
+    {
+      "httpRequest" : {
+        "method" : "GET",
+        "path" : "/api/v1/clients/5123"
+        
+    },
+      "httpResponse" : {
+        "body" : {"id": 5,
+                  "dni": "5123",
+                  "name": "Alberto",
+                  "lastName": "Moyano",
+                  "address": "Calle 123"},
+        "statusCode": 200
+      }
+    },
+    {
+      "httpRequest" : {
+        "method" : "GET",
+        "path" : "/api/v1/clients/6123"
+        
+    },
+      "httpResponse" : {
+        "body" : {"id": 6,
+                  "dni": "6123",
+                  "name": "Pepe",
+                  "lastName": "Pepito",
+                  "address": "Calle 123"},
+        "statusCode": 200
+      }
+    },
+    {
+      "httpRequest" : {
+        "method" : "GET",
+        "path" : "/api/v1/clients/7123"
+        
+    },
+      "httpResponse" : {
+        "body" : {"id": 7,
+                  "dni": "7123",
+                  "name": "Fulano",
+                  "lastName": "Fulanito",
+                  "address": "Calle 123"},
+        "statusCode": 200
+      }
+    },
+    {
+      "httpRequest" : {
+        "method" : "GET",
+        "path" : "/api/v1/clients/8123"
+        
+    },
+      "httpResponse" : {
+        "body" : {"id": 8,
+                  "dni": "8123",
+                  "name": "Alejandro",
+                  "lastName": "Algo",
+                  "address": "Calle 123"},
+        "statusCode": 200
+      }
+    },
+    {
+      "httpRequest" : {
+        "method" : "GET",
+        "path" : "/api/v1/clients/9123"
+        
+    },
+      "httpResponse" : {
+        "body" : {"id": 9,
+                  "dni": "9123",
+                  "name": "Nombre",
+                  "lastName": "Apellido",
+                  "address": "Calle 123"},
+        "statusCode": 200
+      }
+    },
+    {
+      "httpRequest" : {
+        "method" : "GET",
+        "path" : "/api/v1/clients/10123"
+        
+    },
+      "httpResponse" : {
+        "body" : {"id": 10,
+                  "dni": "10123",
+                  "name": "Algo",
+                  "lastName": "Alguito",
+                  "address": "Calle 123"},
+        "statusCode": 200
+      }
+    },
+	{
+      "httpRequest" : {
+        "method" : "GET",
+        "path" : "/api/v1/clients/11"
+        
+    },
+      "httpResponse" : {
+        "body" : {"error": "Client not found"},
+        "statusCode": 404
+      }
+    },
+    {
+      "httpRequest" : {
+        "method" : "GET",
+        "path" : "/api/v1/clients/12"
+        
+    },
+      "httpResponse" : {
+        "body" : {"error": "Client not found"},
+        "statusCode": 404
+      }
+    },
+    {
+      "httpRequest" : {
+        "method" : "GET",
+        "path" : "/api/v1/clients/13"
+        
+    },
+      "httpResponse" : {
+        "body" : {"error": "Client not found"},
+        "statusCode": 404
+      }
+    },
+    {
+      "httpRequest" : {
+        "method" : "GET",
+        "path" : "/api/v1/clients/14"
+        
+    },
+      "httpResponse" : {
+        "body" : {"error": "Client not found"},
+        "statusCode": 404
+      }
+    },
+    {
+      "httpRequest" : {
+        "method" : "GET",
+        "path" : "/api/v1/clients/15"
+        
+    },
+      "httpResponse" : {
+        "body" : {"error": "Client not found"},
+        "statusCode": 404
+      }
+    }
+  ]

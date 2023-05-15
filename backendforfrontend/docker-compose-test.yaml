@@ -1,0 +1,123 @@
+version: "3.8"
+services:
+  service-discovery:
+      image: sporaviral/service-discovery:0.0.1-SNAPSHOT
+      ports:
+        - "8761:8761"
+      networks:
+        -  ms-net
+        
+  config-server:
+      image: sofialoria/undefined-configurationserver:0.0.1-SNAPSHOT
+      ports:
+        - "8943:8943"
+      depends_on:
+        - service-discovery
+      networks:
+        - ms-net
+      environment:
+        EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: '$${EUREKA_URI:http://service-discovery:8761/eureka}'
+        SPRING_DATASOURCE_URL: 'jdbc:h2:file:/tmp/data/configServer'
+        
+  vault-dev:
+      image: vault:latest
+      networks:
+        - ms-net
+      volumes:
+        - vault-file:/vault/file
+      ports:
+        - "8400:8400/tcp"
+      environment:
+        VAULT_DEV_ROOT_TOKEN_ID: '00000000-0000-0000-0000-000000000000'
+        VAULT_DEV_LISTEN_ADDRESS: '0.0.0.0:8400'
+      cap_add:
+        - IPC_LOCK
+      container_name: vault_dev
+      entrypoint: "vault server -dev"
+      
+  insert_secrets:
+      image: juanmolinagl/undefined-vault:0.0.1-SNAPSHOT
+      networks:
+      - ms-net
+      ports:
+        - "8450:8450"
+      restart: on-failure
+      depends_on:
+        - vault-dev
+      environment:
+        DATA_URI: 'http://vault-dev:8400'
+        
+  zipkin-server:
+    image: openzipkin/zipkin
+    ports:
+      - "9411:9411"
+    networks:
+      - ms-net
+    restart: always #Restart if there is a problem starting up 
+  
+  mock-server:
+    image: mockserver/mockserver:latest
+    networks:
+      - ms-net
+    ports:
+      - 1080:1080
+    environment:
+      MOCKSERVER_WATCH_INITIALIZATION_JSON: "true"
+      MOCKSERVER_PROPERTY_FILE: /config/mock-server/mockserver.properties
+      MOCKSERVER_INITIALIZATION_JSON_PATH: /config/mock-server/initializerJson.json
+    volumes:
+      - type: bind
+        source: .
+        target: /config
+  mock-soap:
+    image: juanmolinagl/mock-soap
+    networks:
+      - ms-net
+    ports:
+      - 8088:8088
+    environment:
+      MOCK_SERVICE_NAME: GetCardsSoap MockService
+  mysqldb:
+    container_name: mysqldb
+    networks:
+      - ms-net
+    image: mysql
+    volumes:
+      - /home/user/Desktop/db:/var/lib/mysql
+    ports:
+      - 3307:3306
+    environment:
+      MYSQL_DATABASE: ordersdb
+      MYSQL_ROOT_PASSWORD: root
+  mongodb:
+    image: mongo
+    restart: always
+    container_name: products-mongodb
+    networks:
+      - ms-net
+    ports:
+      - 27017:27017
+    volumes:
+      - data:/data
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: rootuser
+      MONGO_INITDB_ROOT_PASSWORD: rootpass
+  mongo-express:
+    image: mongo-express
+    container_name: products-mongo-express
+    networks:
+      - ms-net
+    restart: always
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: rootuser
+      ME_CONFIG_MONGODB_ADMINPASSWORD: rootpass
+      ME_CONFIG_MONGODB_SERVER: mongodb
+
+volumes:
+     vault-file: {}
+     data: {}
+     
+networks:
+  ms-net:

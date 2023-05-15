@@ -1,0 +1,16 @@
+version: '2.6'
+services:
+  mysqldb:
+    container_name: mysqldb
+    networks:
+    - sales-net
+    image: mysql
+    volumes:
+    - /home/user/Desktop/db:/var/lib/mysql
+    ports:
+    - 3307:3306
+    environment:
+      MYSQL_DATABASE: ordersdb
+      MYSQL_ROOT_PASSWORD: root
+networks:
+  sales-net: null

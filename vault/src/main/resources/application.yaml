@@ -1,0 +1,7 @@
+data:
+  uri: 'http://localhost:8400'
+  token: '00000000-0000-0000-0000-000000000000'
+  mysqlUser: root
+  mysqlPass: root
+  mongoUser: rootuser
+  mongoPass: rootpass

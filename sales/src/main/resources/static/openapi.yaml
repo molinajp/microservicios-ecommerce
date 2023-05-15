@@ -1,0 +1,177 @@
+openapi: 3.0.3
+info:
+  title: Sales Microservice
+  description: Microservice to manage sales module
+  version: v1
+servers:
+- url: http://localhost:8200
+  description: Sales MS
+paths:
+  /sales_app/v1/orders:
+    get:
+      summary: Find sales from a client
+      description: get orders by client id
+      operationId: getSalesByClientId
+      parameters:
+      - in: query
+        name: clientId
+        required: true
+        schema:
+          $ref: '#/components/schemas/Parameters'
+        style: form
+        explode: true
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OrderDTO'
+        '400':
+          description: Invalid ID supplied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorsDTO'
+        '404':
+          description: Sales not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorsDTO'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorsDTO'
+    post:
+      description: OK
+      operationId: POST
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderDTO'
+        '400':
+          description: Invalid ID supplied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorsDTO'
+        '404':
+          description: Sales not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorsDTO'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorsDTO'
+  /sales_app/v1/top-items:
+    get:
+      summary: get top products
+      description: get top 10 products sold
+      operationId: getTopProducts
+      parameters:
+      - in: query
+        name: limit
+        required: true
+        schema:
+          $ref: '#/components/schemas/Limit'
+        style: form
+        explode: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ItemDTO'
+        '400':
+          description: Invalid ID supplied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorsDTO'
+        '404':
+          description: Sales not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorsDTO'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorsDTO'
+components:
+  schemas:
+    OrderDTO:
+      type: object
+      properties:
+        clientId:
+          type: integer
+          format: int64
+        orderDate:
+          type: string
+          format: date-time
+        status:
+          type: string
+          description: payment method
+          enum:
+          - EFVO
+          - TARJETA
+        totalAmount:
+          type: number
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ItemDTO'
+    ItemDTO:
+      type: object
+      properties:
+        productId:
+          type: integer
+          format: int64
+        quantity:
+          type: integer
+          format: int32
+    ErrorsDTO:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExceptionDTO'
+    ExceptionDTO:
+      type: object
+      properties:
+        timestamp:
+          type: string
+          format: date-time
+        code:
+          type: integer
+          format: int32
+        details:
+          type: string
+    Parameters:
+      type: object
+      properties:
+        clientId:
+          type: integer
+    Limit:
+      type: object
+      properties:
+        limit:
+          type: integer

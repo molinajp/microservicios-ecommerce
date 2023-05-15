@@ -1,0 +1,39 @@
+spring:
+  application:
+    name: "clients-service"
+  zipkin:
+    base-url: http://localhost:9411/
+
+server:
+  port: ${clients-port}
+  servlet:
+    context-path: ${clients-path}
+  
+mock:
+  url: http://localhost:1080/api/v1/clients/
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      clientsCircuitBreaker:
+        failure-rate-threshold: 50
+        minimum-number-of-calls: 5
+        automatic-transition-from-open-to-half-open-enabled: true
+        wait-duration-in-open-state: 5s
+        permitted-number-of-calls-in-half-open-state: 3
+        sliding-window-size: 10
+        sliding-window-type: COUNT_BASED
+  retry:
+    instances:
+      clientsRetry:
+        max-attempts: 3
+        wait-duration: 1s
+    metrics:
+      enabled: true
+      legacy:
+        enabled: true
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}

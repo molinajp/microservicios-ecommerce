@@ -1,0 +1,18 @@
+version: '2.6'
+services:
+  mock-server:
+      image: mockserver/mockserver:latest
+      networks:
+        - client-net
+      ports:
+        - 1080:1080
+      environment:
+        MOCKSERVER_WATCH_INITIALIZATION_JSON: "true"
+        MOCKSERVER_PROPERTY_FILE: /config/mock-server/mockserver.properties
+        MOCKSERVER_INITIALIZATION_JSON_PATH: /config/mock-server/initializerJson.json
+      volumes:
+        - type: bind
+          source: .
+          target: /config
+networks:
+  client-net:
